@@ -1,0 +1,893 @@
+
+/*To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.*/
+
+/*
+    Created on : 20 Mar, 2014, 10:56:05 AM
+    Author     : poornendra
+*/
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('images/ajax-loader-transparent.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+.search-view {
+  background-color: #AD7777;
+  opacity: 0.8;
+  display: none;
+
+  text-align: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 15;
+}
+
+.search-view img {
+  height: 50px;
+  width: 50px;
+
+  padding-top: 25px;
+}
+
+.search-view input {
+  width: 60%;
+
+  padding: 16px 0;
+
+  background-color: transparent;
+  color: white;
+  text-align: center;
+
+  border-bottom: 1px solid #C6A09E;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.search-view input::-webkit-input-placeholder {
+  color: white;
+}
+
+.found-members-wrapper {
+    color: white;
+    font-size: 22px;
+
+    padding: 5px 0;
+}
+
+/*.search-view input::-webkit-placeholder {
+  color: white;
+}
+*/
+.header {
+  /*display: flex;*/
+  /*justify-content: space-between;*/
+
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.zoom-control {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.tree-explorer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 15px;
+}
+
+.zoom-button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 0;
+  box-shadow: 0 0 2px 2px #EAE7E1;
+  background-color: white;
+  color: #AD7777;
+  /* padding-top: 3px; */
+  margin-right: -3px;
+}
+
+.zoom-button-disabled {
+  cursor: default;
+  background-color: #EAE7E1;
+}
+
+.tree-settings {
+  position: absolute;
+  left: 62px;
+  right: 92px;
+  text-align: center;
+  top: -2px;
+}
+
+.tree-settings-button {
+  width: 140px;
+  height: 32px;
+  cursor: pointer;
+
+  border: 0;
+  box-shadow: 2px 3px 0px #E5E5E5;
+
+  background-color: white;
+  font-size: 12px;
+}
+
+.tree-settings-icon {
+  height: 18px;
+}
+
+.tree-settings-button-label {
+  position: relative;
+  top: -3px;
+  left: 6px;
+
+  color: #AD7777;
+
+}
+
+.tree-settings-dropdown {
+  display: none;
+
+  width: 140px;
+  opacity: 0.9;
+  margin-top: 15px;
+  padding: 10px 0;
+
+  background-color: #AD7777;
+  color: white;
+}
+
+.tree-radio-button-wrapper {
+  float: right;
+  padding: 5px 0;
+
+  font-size: 11px;
+}
+
+.tree-radio-button {
+  color: white;
+}
+
+.tree-settings-button-options-label {
+  position: relative;
+  top: -3px;
+}
+
+.tree-settings-dropdown-button {
+  width: 110px;
+  height: 20px;
+  border-width: 0;
+  cursor: pointer;
+
+  color: white;
+  background-color: #804d4d;
+
+  margin: 6px 16px 0px;
+}
+
+
+.option-wrapper {
+  display: inline-block;
+  width: 36px;
+  cursor: pointer;
+
+  box-shadow: 0 0 2px 2px #EAE7E1;
+  background-color: white;
+
+  text-align: center;
+
+  padding: 3px 0;
+  height: 25px;
+}
+
+.search-dropdown {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 47px;
+
+  width: 140px;
+  margin-top: 15px;
+  padding: 10px 0;
+
+  opacity: 0.9;
+  background-color: #AD7777;
+  color: white;
+  text-align: center;
+}
+
+.search-field {
+  width: 85%;
+}
+
+.search-dropdown button {
+  width: 110px;
+  height: 20px;
+  border-width: 0;
+  cursor: pointer;
+
+  color: white;
+  background-color: #804d4d;
+
+  margin: 8px 16px 0px;
+}
+
+.tree-wrapper {
+  position: relative;
+  top: 30px;
+}
+
+.option-wrapper img {
+  height: 28px;
+}
+
+.dropdown-add-member {
+  display: none;
+
+  position: absolute;
+  top: 112px;
+  left: -37px;
+  z-index: 10;
+}
+
+.family-tree {
+  position: relative;
+  top: 25px;
+}
+
+.add-member-form-wrapper {
+  display: none;
+  background-color: #AD7777;
+  opacity: 0.96;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+}
+
+.delete-prompt-wrapper {
+  display: none;
+  background-color: #AD7777;
+  opacity: 0.96;
+  text-align: center;
+
+  height: 100px;
+  width: 250px;
+  margin-top: -50px;
+  margin-left: -125px;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 12;
+}
+
+.delete-prompt-button {
+  border: none;
+  background: #eee;
+  width: 45px;
+  height: 22px;
+  border-radius: 2px;
+  padding: 4px 0;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 2%;
+  right: 10px;
+
+  height: 30px;
+  width: 30px;
+
+  cursor: pointer;
+}
+
+.add-member-form {
+  padding: 5px 0;
+  text-align: center;
+}
+
+.form-heading {
+  background-color: #804d4d;
+
+  font-size: 18px;
+  color: white;
+  text-align: center;
+
+  padding: 15px 0px;
+}
+
+.form-outer-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.form-inner-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  /*    position: fixed;
+    left: 50%;
+    width: 100%;
+    max-width: 600px;
+    margin-left: -300px;
+    top: 50%;
+    margin-top: -127px;*/
+}
+
+.radio-buttons-wrapper {
+  margin: 17px 0 22px;
+  display: inline-block;
+}
+
+fieldset {
+  border: 0;
+  margin-bottom: 5px;
+}
+
+.radio-button-group {
+  text-align: center;
+  padding: 0;
+  margin-left: 38px;
+}
+
+.radio-option-wrapper {
+      display: inline-block;
+    text-align: left;
+    /* padding: 5px 25px; */
+    width: 85px;
+    position: relative;
+    left: -28px;
+    /* float: left; */
+}
+
+.radio-button-group label {
+  position: relative;
+  top: -4px;
+
+  color: white;
+  font: 15px;
+}
+
+.gender-radio-button-wrapper {
+  /*display: inline-block;*/
+}
+
+.form-error {
+  display: none;
+}
+
+.form-error-text {
+  color: #b61616;
+}
+
+.input-field-wrapper {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.input-field {
+  width: 50%;
+  height: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: #AD7777;
+}
+
+.input-field-error {
+  border: 1px solid red;
+}
+
+.mobile-format-example {
+  width: 50%;
+  font-size: 13px;
+  position: relative;
+  left: 25%;
+  top: 5px;
+}
+
+.submit-button-wrapper {
+  text-align: center;
+}
+
+.submit-button-error-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.submit-button {
+  width: 50%;
+  height: 35px;
+  border-width: 0;
+
+  color: white;
+  background-color: #804d4d;
+
+  margin: 3px 0px 20px;
+}
+
+.error-message {
+  display: none;
+
+  position: absolute;
+  top: 29px;
+  left: 11px;
+
+  font-size: 12px;
+  color: white
+}
+
+::-webkit-input-placeholder {
+   color: #AD7777;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #AD7777;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #AD7777;  
+}
+
+:-ms-input-placeholder {  
+   color: #AD7777;  
+}
+
+.pk-memberForm {
+  /*background: url("images/back.png") repeat;*/
+  background: transparent;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index:1000;
+  display:none;
+}
+
+.node-class.node-clicked {
+  background-color: #AD7777;
+}
+
+#treeGround .node-class.node-clicked  span {
+  color: #FFFFFF;
+}
+
+.node-class.node-clicked .add-parent-icon-wrapper,
+.node-class.node-clicked .add-icon-wrapper,
+.node-class.node-clicked .edit-icon-wrapper,
+.node-class.node-clicked .delete-icon-wrapper  {
+  display: inline-block;
+}
+
+.node-class.hide-parent-icon .add-parent-icon-wrapper {
+  display: none;
+}
+
+.tree-ground .add-parent-icon-wrapper {
+  display: none;
+  cursor: pointer;
+
+  position: absolute;
+  top: -29px;
+  left: 18px;
+  z-index: 3;
+  padding: 10px;
+}
+
+.tree-ground .add-parent-icon {
+  color: #222;
+  font-size: 20px !important;
+}
+
+.add-icon-wrapper {
+  display: none;
+  cursor: pointer;
+
+  position: absolute;
+  bottom: -29px;
+  left: 18px;
+  z-index: 3;
+  padding: 10px;
+}
+
+.tree-ground .add-member-icon {
+  
+
+  color: #222;
+  font-size: 20px !important;
+}
+
+.tree-ground .delete-member-icon {
+  
+
+  color: #5f3c3c;
+  font-size: 20px !important;
+}
+
+.delete-icon-wrapper {
+  display: none;
+  cursor: pointer;
+
+      cursor: pointer;
+    position: absolute;
+    bottom: 28%;
+    right: 40px;
+    padding: 10px;
+}
+
+.edit-icon-wrapper {
+  display: none;
+  cursor: pointer;
+    position: absolute;
+    bottom: 28%;
+    left: 40px;
+    padding: 10px;
+}
+
+.tree-ground .edit-member-icon {
+  
+
+  color: #5f3c3c;
+  font-size: 20px !important;
+}
+
+#pk-member-details {
+    background: url("images/back.png") repeat;;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index:1000;
+    display:none;
+}
+#pk-member-details table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    left: 34%;
+    padding: 30px;
+    position: relative;
+    top: 23%;
+    width: 461px;
+    box-shadow: 0 0 23px #4C4B4B;
+}
+#pk-member-details img{
+    height: 114px;
+}
+.pk-memberForm table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    left: 34%;
+    padding: 30px;
+    position: relative;
+    top: 23%;
+    width: 461px;
+    box-shadow: 0 0 23px #4C4B4B;
+}
+#treeGround{
+    width: 100%;
+    cursor:move;
+}
+.pk-cross{
+  left:34%;
+  top:23%;
+  padding-left:446px;
+  position: absolute;
+  z-index:10000;
+  cursor:pointer;
+}
+.member {
+  height: 107px;
+  overflow: hidden;
+  width: 113px;
+  border: 1px solid #969696;
+  position: absolute;
+}
+
+#treeGround .member-name {
+  color: #AD7777;
+  font-size: 14px;
+  text-transform: capitalize;
+
+  position: relative;
+  height: auto;
+  max-height: 4em;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 1.2em;
+    background: linear-gradient(to right, rgba(245, 245, 245, 0), rgba(245, 245, 245, 1) 50%);
+  }
+}
+
+@supports (-webkit-line-clamp: 3) {
+ #treeGround .member-name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 5em;
+    height: auto;
+    word-wrap: break-word;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.member-image {
+  padding: 4px 0px 21px;
+  height: 34px;
+}
+
+/*center img {
+    padding-top: 10px;
+    height:65px;
+}*/
+
+#pk-family-tree{
+   /* overflow:hidden;
+    height:500px;
+    width:1000px;*/
+}
+
+// copied code
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+.tree-ground {
+    height: 826px;
+}
+.tree-ground ul {
+    padding-top: 28px; position: relative;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    cursor: move;
+}
+
+.tree-ground li {
+    float: left; text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    cursor:pointer;
+}
+
+#pk-popmenu {
+    padding: 0;
+    width: 148px;
+    display:none;
+    position: absolute;
+}
+
+#pk-popmenu ul {
+    list-style: none outside none;
+    padding: 7px;
+    width: 136px;
+    border-color: #C4C4C4;
+    border-image: none;
+    border-right: 1px solid #C4C4C4;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    padding: 0px;
+    padding-left: 0;
+    width: 136px;
+}
+
+#pk-popmenu ul li{
+    font-family: arial, verdana, tahoma;
+}
+#pk-popmenu ul li{
+    border-top: 1px solid #C4C4C4;
+    padding: 4px 0 4px 10px;
+    background: #DDDDDD;
+    color:#333333;
+    font-size: 13px;
+
+}
+#pk-popmenu ul li:hover{
+    background: #ACACAC;
+}
+
+.spouse:before {
+  border-top: 2px solid #D5D2CD;
+  content: "";
+  display: block;
+  left: -37px;
+  position: relative;
+  top: 84px;
+  width: 27px;
+}
+
+.spouse{
+    margin-left:28px;
+}
+/*
+ below css are from http://thecodeplayer.com/walkthrough/css3-family-tree
+*/
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree-ground li::before, .tree-ground li::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+
+    border-top: 2px solid #D5D2CD;
+
+    width: 50%;
+    height: 18px;
+}
+.tree-ground li::after{
+    right: auto; left: 50%;
+    border-left: 2px solid #D5D2CD;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree-ground li:only-child::after, .tree-ground li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree-ground li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree-ground li:first-child::before, .tree-ground li:last-child::after{
+    border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree-ground li:last-child::before{
+    border-right: 2px solid #D5D2CD;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.tree-ground li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree-ground ul ul::before{
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    border-left: 2px solid #D5D2CD;
+    width: 0; height: 28px;
+}
+
+.tree-ground li a{
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 90px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 2px #EAE7E1;
+  background-color: white;
+  
+  text-decoration: none;
+  color: #AD7777;
+  font-family: arial, verdana, tahoma;
+  font-size: 11px;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+/*For removing border appears on clciking element*/
+*:focus {
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+/*.tree-ground li a:hover, .tree-ground li a:hover+ul li a {
+    background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}*/
+/*Connector styles on hover*/
+/*.tree-ground li a:hover+ul li::after,
+.tree-ground li a:hover+ul li::before,
+.tree-ground li a:hover+ul::before,
+.tree-ground li a:hover+ul ul::before{
+    border-color:  #94a0b4;
+}*/
+
+
+/*tip of the add member form*/
+/*.add-member-form-wrapper:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  margin-left: -10px;
+  border: 5px solid transparent;
+  border-bottom: 10px solid #804d4d;
+}
+*/
+.tree-settings-dropdown:after {
+  content: "";
+  position: absolute;
+  top: 33px;
+  left: 50%;
+  margin-left: -16px;
+  border: 5px solid transparent;
+  border-bottom: 10px solid #AD7777;
+}
+
+.search-dropdown:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 86%;
+  margin-left: -10px;
+  border: 5px solid transparent;
+  border-bottom: 10px solid #AD7777;
+}
+
+/*Thats all. I hope you enjoyed it.
+Thanks :)

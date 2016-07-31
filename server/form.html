@@ -1,0 +1,244 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<h2>Create family form</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/auth-user" method="POST">
+  <div class="form-group">
+  <label for="fieldName" class="col-sm-2 control-label">Family Name</label>
+  <div class="col-sm-4">
+    <input type="text" class="form-control" id="fieldName" name="familyName">
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Phone number</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="phone">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="password">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">Register</button>
+    </div>
+  </div>
+</form>
+
+<h2>Create new user form</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/create-user" method="POST">
+  <div class="form-group">
+  <label for="fieldName" class="col-sm-2 control-label">Family ID</label>
+  <div class="col-sm-4">
+    <input type="number" class="form-control" id="fieldName" name="family_ID">
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Phone number</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="phone">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Gender</label>
+    <div class="col-sm-4">
+      <input type="number" class="form-control" required id="fieldName" name="gender">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">CREATE</button>
+    </div>
+  </div>
+</form>
+
+<h2>Create new Post form</h2>
+<form class="form-horizontal" role="form"action="http://52.33.194.176:8080/create-post" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="description">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">User ID</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="userID">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Post Type</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="postType">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Event time</label>
+    <div class="col-sm-4">
+      <input type="date" class="form-control" required id="fieldName" name="eventTime">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">CREATE</button>
+    </div>
+  </div>
+</form>
+
+<h2>Find post by ID</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/get-post-by-id" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Post ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="postId">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">FIND</button>
+    </div>
+  </div>
+</form>
+
+<h2>Add Comment to Post</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/add-comment" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Post ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="postId">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">POST</button>
+    </div>
+  </div>
+</form>
+
+<h2>Add Like to Post</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/add-like" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Post ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="postId">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">User ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="userID">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">LIKE</button>
+    </div>
+  </div>
+</form>
+
+<h2>Fetch pending events</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/get-posts" method="POST">
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">FETCH EVENTS</button>
+    </div>
+  </div>
+</form>
+
+<h2>Fetch New Posts</h2>
+<form class="form-horizontal" role="form" action="http://localhost:8080/new-post-count" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Last Updated:</label>
+    <div class="col-sm-4">
+      <input type="date" class="form-control" id="fieldName" name="lastUpdated">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">FETCH COUNT</button>
+    </div>
+  </div>
+</form>
+
+<h2>Fetch New Posts</h2>
+<form class="form-horizontal" role="form" action="http://localhost:8080/profile-data-by-id" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Post ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="postId">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Last Updated:</label>
+    <div class="col-sm-4">
+      <input type="date" class="form-control" id="fieldName" name="lastUpdated">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">FETCH COMMENTS</button>
+    </div>
+  </div>
+</form>
+
+<h2>Create Group form</h2>
+<form class="form-horizontal" role="form"action="http://localhost:8080/create-group" method="POST">
+  <div class="form-group">
+  <label for="fieldName" class="col-sm-2 control-label">Group Name</label>
+  <div class="col-sm-4">
+    <input type="text" class="form-control" id="fieldName" name="group_name">
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">jid</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" required id="fieldName" name="phone">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">Create</button>
+    </div>
+  </div>
+</form>
+
+<h2>Edit user info</h2>
+<form class="form-horizontal" role="form" action="http://localhost:8080/edit-user-info" method="POST">
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">User ID:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="user_ID">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fieldName" class="col-sm-2 control-label">Info</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldName" name="username">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" class="btn btn-default">EDIT INFO</button>
+    </div>
+  </div>
+</form>

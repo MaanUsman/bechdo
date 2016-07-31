@@ -1,0 +1,27 @@
+{
+  "name": "ansab",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "0.9.0",
+    "async-waterfall": "0.1.5",
+    "body-parser": "1.12.4",
+    "dotq": "^0.1.1",
+    "express": "4.2.0",
+    "express-promise": "^0.4.0",
+    "express-session": "1.8.2",
+    "formidable": "1.0.17",
+    "fs": "0.0.2",
+    "mongodb": "*",
+    "mongoose": "3.8.15",
+    "mysql": "2.5.4",
+    "neo4j": "^1.1.1",
+    "password-generator": "^2.0.2",
+    "q": "^1.4.1",
+    "sequelize": "2.0.3",
+    "twilio": "^2.9.0"
+  }
+}

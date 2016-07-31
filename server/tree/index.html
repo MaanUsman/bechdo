@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html style="background-color: #FAF8F4;height: 100%">
+  <head>
+    <title>Jquery plugin for family tree</title>
+    <meta charset='UTF-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel='stylesheet' href='jquery-ui.css'/>
+    <link rel='stylesheet' href='style.css'/>
+   <!--  <link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.0/lodash.min.js"></script>
+    <script src='jquery-1.11.0.js'></script>
+    <script src='jquery-ui.js'></script>
+    <script src='ps-family.js'></script>
+  </head>
+
+  <body>
+    <div class="search-view">
+      <div>
+        <img src="images/icon-cross.png" >
+      </div>
+
+      <input placeholder="SEARCH" type="text">
+
+      <div class="search-results">
+      </div>
+    </div>
+
+    <div class="delete-prompt-wrapper">
+      <h5>Are you sure you want to delete?</h5>
+      <div class="prompt-buttons-wrapper">
+        <button id="delete-yes" class="delete-prompt-button">Yes</button>
+        <button id="delete-no" class="delete-prompt-button">No</button>
+      </div>
+    </div>
+
+    <div class="add-member-form-wrapper">
+      <img class="cancel-button" src="images/icon-cross.png">
+      <div class="form-heading">
+        <p>Add a family Member</p>
+      </div>
+      <form class="add-member-form">
+        <div class="radio-buttons-wrapper">
+          <fieldset class="radio-button-group">
+            <div class="radio-option-wrapper">
+              <label><input type="radio" name="gender" value="true" checked>Man</label>
+            </div>
+
+            <div class="radio-option-wrapper">
+              <label><input type="radio" name="gender" value="false" > Woman</label>
+            </div>
+
+          </fieldset>
+
+          <fieldset class="radio-button-group">
+            <div class="radio-option-wrapper">
+              <label> <input type="radio" name="aliveStatus" value="true" checked>Alive</label>
+            </div>
+
+            <div class="radio-option-wrapper">
+              <label> <input type="radio" name="aliveStatus" value="false" > Dead</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-error">
+          <span class="form-error-text"></span> 
+        </div>
+
+        <div class="input-field-wrapper">
+          <input id="pk-name" class="input-field" type="text" placeholder="Name" >
+        </div>
+
+        <div class="input-field-wrapper">
+          <input id="pk-email" class="input-field" type="text" placeholder="Email">
+        </div>
+
+        <div class="input-field-wrapper">
+          <input id="pk-mobile-no" class="input-field" type="text" placeholder="Mobile No" >
+          <div class="mobile-format-example">
+            Mobile number must be like +966512555698
+          </div>
+        </div>
+      </form>
+
+      <div class="submit-button-error-wrapper">
+        <button id="add-member-submit-button" class="submit-button"> Submit</button>
+        <p class="error-message">Please enter name</p>
+      </div>
+    </div>
+    <header class="header">
+      <div class="zoom-control">
+        <input class="zoom-button" type='button' id='zoom-in' value='+' />
+        <input class="zoom-button" type='button' id='zoom-out' value='-' />
+      </div>
+
+      <div class="tree-settings">
+        <button class="tree-settings-button">
+          <img class="tree-settings-icon" src="images/icon-tree-selected.png">
+          <label class="tree-settings-button-label">Tree Settings</label>
+        </button>
+
+        <div class="tree-settings-dropdown" tabIndex="-1">
+          <div class="tree-radio-button-wrapper">
+            <label class="tree-settings-button-options-label"><span style="color: white; font-size: 9px">(Male Only) </span>Ansab Tree <input class="tree-radio-button" type="radio" name="tree-type" value="true" checked></label>
+            <br>            
+          </div>
+
+          <div class="tree-radio-button-wrapper">
+            <label class="tree-settings-button-options-label">Family Tree <input class="tree-radio-button" type="radio" name="tree-type" value="false" ></label>
+          </div>
+          <br>
+          
+          <button class="tree-settings-dropdown-button">Submit</button>
+        </div>
+      </div>
+
+      <div class='tree-explorer'>
+        <div class="option-wrapper">
+          <img src="images/icon-search.png">
+        </div>
+
+        <div class="search-dropdown" tabIndex="-2">
+            <input class="search-field" type="text" placeholder="search member" style="text-align: center">
+            <button id="searchTree">Submit</button>
+          </div>
+
+        <div id="userNavigator" class="option-wrapper">
+          <img src="images/icon-location.png">
+        </div>
+      </div>
+    </header>
+
+    <div class="tree-wrapper" id='pk-family-tree'>
+    </div>
+
+    <div class="modal"><!-- Place at bottom of page --></div>
+
+    <script>
+        var tree = {
+          "li0": {
+            "a0": {
+              "ansab_id": 2,
+              "name": "Abdullah",
+              "age": "wewe",
+              "gender": 1,
+              "pic": "images/icon-avt1.png",
+              "aliveStatus": "Alive",
+              "mobileNumber": "+923455897253",
+              "email": "umair.khan@emumba.com"
+            },
+
+            "ul": {
+              "li0": {
+                "a0": {
+                  "ansab_id": 91,
+                  "name": "Ragi",
+                  "age": "34",
+                  "gender": 1,
+                  "relation": "Child",
+                  "pic": "images/icon-avt1.png",
+                  "aliveStatus": "Alive",
+                  "mobileNumber": "+923455897253",
+                  "email": "umair.khan@emumba.com"
+                },
+                "ul": {
+                  "li0": {
+                    "a0": {
+                      "ansab_id": 91,
+                      "name": "Ragi",
+                      "age": "34",
+                      "gender": 1,
+                      "relation": "Child",
+                      "pic": "images/icon-avt1.png",
+                      "aliveStatus": "Alive",
+                      "mobileNumber": "+923455897253",
+                      "email": "umair.khan@emumba.com"
+                    },
+                  },
+                  "li1": {
+                    "a0": {
+                      "ansab_id": 98,
+                      "name": "Bandar",
+                      "age": "34",
+                      "gender": 0,
+                      "relation": "Child",
+                      "pic": "images/icon-avt1.png",
+                      "aliveStatus": "Alive",
+                      "mobileNumber": "+923455897253",
+                      "email": "umair.khan@emumba.com"
+                    }
+                  },
+                  "li2": {
+                    "a0": {
+                      "ansab_id": 94,
+                      "name": "Khalid",
+                      "age": "34",
+                      "gender": 1,
+                      "relation": "Child",
+                      "pic": "images/icon-avt1.png",
+                      "aliveStatus": "Alive",
+                      "mobileNumber": "+923455897253",
+                      "email": "umair.khan@emumba.com"
+                    }
+                  }
+                }
+              },
+              "li1": {
+                "a0": {
+                  "ansab_id": 98,
+                  "name": "Bandar",
+                  "age": "34",
+                  "gender": 0,
+                  "relation": "Child",
+                  "pic": "images/icon-avt1.png",
+                  "aliveStatus": "Alive",
+                  "mobileNumber": "+923455897253",
+                  "email": "umair.khan@emumba.com"
+                },
+                "ul": {
+                  "li0": {
+                    "a0": {
+                      "ansab_id": 91,
+                      "name": "Ragi",
+                      "age": "34",
+                      "gender": 1,
+                      "relation": "Child",
+                      "pic": "images/icon-avt1.png",
+                      "aliveStatus": "Alive",
+                      "mobileNumber": "+923455897253",
+                      "email": "umair.khan@emumba.com"
+                    },
+                  },
+                  "li1": {
+                    "a0": {
+                      "ansab_id": 98,
+                      "name": "Bandar",
+                      "age": "34",
+                      "gender": 0,
+                      "relation": "Child",
+                      "pic": "images/icon-avt1.png",
+                      "aliveStatus": "Alive",
+                      "mobileNumber": "+923455897253",
+                      "email": "umair.khan@emumba.com"
+                    }
+                  }
+                }
+              },
+              "li2": {
+                "a0": {
+                  "ansab_id": 94,
+                  "name": "Khalid",
+                  "age": "34",
+                  "gender": 1,
+                  "relation": "Child",
+                  "pic": "images/icon-avt1.png",
+                  "aliveStatus": "Alive",
+                  "mobileNumber": "+923455897253",
+                  "email": "umair.khan@emumba.com"
+                }
+              }
+            }
+          }
+        };
+    </script>
+  </body>
+</html>

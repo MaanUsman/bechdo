@@ -1,0 +1,83 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container-fluid">
+  <h2>Add member in tree</h2>
+  <form class="form-horizontal" role="form"action="http://localhost:8085/add-member" method="POST">
+    <div class="form-group">
+      <h3>New Member</h3>
+      <div class="col-sm-4">
+        <label for="fieldName" class="col-sm-2 control-label">Name</label><input type="text" class="form-control" name="newMemberName">
+
+        <label for="fieldName" class="col-sm-2 control-label">email</label><input type="text" class="form-control" name="newMemberEmail">
+
+         <label for="fieldName" class="col-sm-2 control-label">Mobile</label><input type="text" class="form-control" name="newMemberMobileNumber">
+        <div>
+          <label>Male</label><input type="radio" name="gender" value="male" checked>
+          <label>Female</label><input type="radio" name="gender" value="female" >
+        </div>
+
+        <div>
+          <label>Alive</label><input type="radio" name="aliveStatus" value="alive" checked>
+          <label>Dead</label><input type="radio" name="aliveStatus" value="dead" >
+        </div>
+      </div>
+    </div>
+
+     <div class="form-group">
+       <h3>Exising member</h3>
+       <label for="fieldName" class="col-sm-2 control-label">Phone</label>
+       <div class="col-sm-4">
+        <input type="text" class="form-control" name="existingMemberMobileNumber">
+       </div>
+
+       <label for="fieldName" class="col-sm-2 control-label">email</label>
+       <div class="col-sm-4">
+        <input type="text" class="form-control" name="existingMemberEmail">
+       </div>
+    </div>
+
+    <div>
+      <h6>Relation</h6>
+      <label>Parent</label><input type="radio" name="relation" value="Parent" checked>
+      <label>Child</label><input type="radio" name="relation" value="Child" >
+    </div>
+
+    <input type="submit">
+  </form>
+
+  <h2>Edit Member</h2>
+  <form class="form-horizontal" role="form"action="http://localhost:8085/edit-member" method="POST">
+    <div class="form-group">
+      <h3>New Member</h3>
+      <div class="col-sm-4">
+        <label for="fieldName" class="col-sm-2 control-label">Name</label><input type="text" class="form-control" name="newMemberName">
+
+        <label for="fieldName" class="col-sm-2 control-label">email</label><input type="text" class="form-control" name="newMemberEmail">
+
+         <label for="fieldName" class="col-sm-2 control-label">Mobile</label><input type="text" class="form-control" name="newMemberMobileNumber">
+        <div>
+          <label>Male</label><input type="radio" name="gender" value="male" checked>
+          <label>Female</label><input type="radio" name="gender" value="female" >
+        </div>
+
+        <div>
+          <label>Alive</label><input type="radio" name="aliveStatus" value="alive" checked>
+          <label>Dead</label><input type="radio" name="aliveStatus" value="dead" >
+        </div>
+      </div>
+    </div>
+    <input type="submit">
+  </form>
+
+   <h2>Delete Member</h2>
+  <form class="form-horizontal" role="form"action="http://localhost:8085/delete-member" method="POST">
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="fieldName" class="col-sm-2 control-label">email</label><input type="text" class="form-control" name="newMemberEmail">
+         <label for="fieldName" class="col-sm-2 control-label">Mobile</label><input type="text" class="form-control" name="newMemberMobileNumber">
+      </div>
+    </div>
+    <input type="submit">
+  </form>
+</div>
